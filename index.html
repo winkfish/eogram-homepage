@@ -1,348 +1,820 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>이오그램 | eogram — 데이터와 AI로 비즈니스를 성장시키는 파트너</title>
-<meta name="description" content="이오그램(eogram)은 데이터와 디지털 기술을 활용하여 기업의 비즈니스 성장을 위한 최적의 솔루션을 제공합니다. AI, 빅데이터&클라우드, 전략&마케팅, 프로젝트&솔루션 4개 전문 LAB이 함께합니다.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23005AB8'/%3E%3Ctext x='50' y='66' font-size='54' font-family='monospace' font-weight='700' fill='white' text-anchor='middle'%3Ee%3C/text%3E%3C/svg%3E">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이오그램 | eogram — 데이터에 구조를 부여합니다</title>
+<meta name="description" content="㈜이오그램은 온톨로지·AI·데이터 거버넌스로 국내 기업과 개도국 공공의 데이터를 구조화합니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314181A'/%3E%3Ctext x='50' y='67' font-size='56' font-family='Georgia, serif' fill='%231B4DE4' text-anchor='middle'%3Ee%3C/text%3E%3C/svg%3E">
+<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14181A;
+  --ink-70:#454C50;
+  --ink-45:#767D80;
+  --paper:#EDEEE9;
+  --paper-2:#E3E5DE;
+  --paper-3:#D8DBD2;
+  --rule:#C7CABF;
+  --blue:#1B4DE4;
+  --green:#2C6A52;
+  --white:#FBFBF9;
+  --sans:"IBM Plex Sans KR",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --pad:clamp(20px,5vw,72px);
+  --spine:76px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-weight:300;
+  font-size:16px;line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+ 
+/* ---------- utility type ---------- */
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-45);display:flex;align-items:center;gap:12px;margin-bottom:28px;
+}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--rule)}
+ 
+/* ---------- header ---------- */
+.hdr{
+  position:sticky;top:0;z-index:60;
+  background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.hdr-in{
+  max-width:1440px;margin:0 auto;padding:0 var(--pad);
+  height:58px;display:flex;align-items:center;gap:24px;
+}
+.mark{flex-shrink:0;display:flex;align-items:center}
+.mark img{height:24px;width:auto;display:block}
+.hdr-meta{
+  font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink-45);
+  text-transform:uppercase;white-space:nowrap;
+}
+.nav{margin-left:auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{
+  font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:-.01em;
+  padding:7px 12px;white-space:nowrap;color:color-mix(in srgb,var(--ink) 78%,var(--ink-70));
+  border:1px solid transparent;border-radius:2px;transition:color .2s,border-color .2s,background .2s;
+}
+.nav a i{font-style:normal;font-family:var(--mono);color:var(--blue);margin-right:6px;font-size:10px}
+.nav a:hover{color:var(--ink);border-color:var(--rule);background:var(--white)}
+.lang-switch{display:flex;gap:2px;margin-left:16px;flex-shrink:0}
+.lg{
+  font-family:var(--mono);font-size:10px;letter-spacing:.08em;
+  padding:6px 9px;border:1px solid var(--rule);background:transparent;cursor:pointer;
+  color:var(--ink-45);transition:color .2s,border-color .2s,background .2s;
+}
+.lg:hover{color:var(--ink);border-color:var(--ink-45)}
+.lg.on{color:var(--paper);background:var(--ink);border-color:var(--ink)}
+
+/* ---------- spine (signature) ---------- */
+.spine{
+  position:fixed;left:0;top:58px;bottom:0;width:var(--spine);z-index:50;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  pointer-events:none;
+}
+.spine-line{position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--rule)}
+.spine-nodes{position:relative;display:flex;flex-direction:column;gap:34px;align-items:center}
+.snode{
+  position:relative;width:9px;height:9px;border-radius:50%;
+  background:var(--paper);border:1px solid var(--ink-45);
+  transition:background .35s,border-color .35s,transform .35s;
+  pointer-events:auto;
+}
+.snode::after{
+  content:attr(data-l);position:absolute;left:16px;top:50%;transform:translateY(-50%);
+  font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--ink-45);
+  white-space:nowrap;opacity:0;transition:opacity .25s;
+}
+.snode:hover::after{opacity:1}
+.snode.on{background:var(--blue);border-color:var(--blue);transform:scale(1.35)}
+.snode.on::after{opacity:1;color:var(--ink)}
+ 
+/* ---------- shell ---------- */
+.shell{padding-left:var(--spine)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+.sec{padding:clamp(64px,9vw,124px) 0;border-top:1px solid var(--rule)}
+.sec:first-of-type{border-top:0}
+.band{background:var(--paper-2)}
+ 
+/* ---------- hero ---------- */
+.hero{padding:clamp(52px,8vw,104px) 0 clamp(56px,8vw,108px)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,5vw,72px);align-items:center}
+h1{
+  font-size:clamp(38px,6.4vw,80px);font-weight:200;line-height:1.08;
+  letter-spacing:-.035em;margin-bottom:30px;
+}
+h1 b{font-weight:600}
+h1 .u{
+  font-weight:600;position:relative;white-space:nowrap;
+  background:linear-gradient(transparent 62%,color-mix(in srgb,var(--blue) 22%,transparent) 62%);
+}
+.lede{font-size:clamp(15px,1.45vw,18px);max-width:44ch;color:var(--ink-70);margin-bottom:38px}
+.lede em{font-style:normal;color:var(--ink);font-weight:500}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px}
+.btn{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:13px 22px;border:1px solid var(--ink);transition:background .22s,color .22s;
+}
+.btn-a{background:var(--ink);color:var(--paper)}
+.btn-a:hover{background:var(--blue);border-color:var(--blue)}
+.btn-b:hover{background:var(--ink);color:var(--paper)}
+ 
+.figbox{position:relative}
+.figbox svg{width:100%;height:auto;display:block;overflow:visible}
+.figcap{margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.13em;color:var(--ink-45);text-transform:uppercase}
+.gnode{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(0)}
+.gedge{stroke:var(--ink-45);stroke-width:.8;fill:none;stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
+.run .gnode{animation:pop .5s cubic-bezier(.22,1,.36,1) forwards;animation-delay:var(--d)}
+.run .gedge{animation:draw .8s ease forwards;animation-delay:var(--d)}
+@keyframes pop{to{opacity:1;transform:scale(1)}}
+@keyframes draw{to{stroke-dashoffset:0}}
+ 
+/* ---------- axes ---------- */
+.axes{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.axis{background:var(--paper);padding:clamp(26px,3.4vw,42px);position:relative}
+.axis::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--c)}
+.axis-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--c);margin-bottom:18px}
+.axis h3{font-size:clamp(21px,2.3vw,28px);font-weight:300;letter-spacing:-.02em;margin-bottom:14px}
+.axis p{font-size:14.5px;color:var(--ink-70);margin-bottom:22px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--mono);font-size:10px;letter-spacing:.06em;padding:5px 9px;border:1px solid var(--rule);color:var(--ink-70)}
+ 
+/* ---------- solutions ---------- */
+.sol{
+  display:grid;grid-template-columns:64px 1.5fr 2fr auto;gap:clamp(14px,2.4vw,34px);
+  padding:26px 0;border-top:1px solid var(--rule);align-items:start;
+  transition:background .25s;
+}
+.sol:last-child{border-bottom:1px solid var(--rule)}
+.sol:hover{background:var(--white)}
+.sol-n{font-family:var(--mono);font-size:11px;color:var(--blue);letter-spacing:.08em;padding-top:5px}
+.sol-t h3{font-size:clamp(18px,1.9vw,23px);font-weight:400;letter-spacing:-.02em}
+.sol-t .en{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--ink-45);margin-top:5px}
+.sol-d{font-size:14.5px;color:var(--ink-70)}
+.sol-d .note{display:block;margin-top:9px;font-size:13px;color:var(--ink-45)}
+.sol-lab{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--ink-45);padding-top:6px;white-space:nowrap}
+ 
+/* ---------- ODA ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:44px}
+.step{background:var(--paper);padding:clamp(20px,2.6vw,30px);position:relative}
+.step-n{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--green);margin-bottom:14px}
+.step h4{font-size:19px;font-weight:500;letter-spacing:-.01em;margin-bottom:8px}
+.step .q{font-size:13px;color:var(--ink-45);margin-bottom:12px;font-style:italic}
+.step ul{list-style:none;font-size:13.5px;color:var(--ink-70)}
+.step li{padding-left:11px;position:relative;line-height:1.6;margin-bottom:3px}
+.step li::before{content:"";position:absolute;left:0;top:9px;width:4px;height:1px;background:var(--ink-45)}
+ 
+.pull{
+  border-left:3px solid var(--green);padding:22px 26px;background:var(--white);
+  font-size:15.5px;line-height:1.75;color:var(--ink-70);max-width:76ch;
+}
+.pull b{color:var(--ink);font-weight:600}
+ 
+/* ---------- partners ---------- */
+.fig{margin-bottom:38px}
+.fig-h{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--ink-45);padding-bottom:11px;border-bottom:1px solid var(--rule);margin-bottom:18px}
+.logos{display:flex;flex-wrap:wrap;gap:10px}
+.logo{
+  font-size:14.5px;font-weight:400;padding:11px 20px;
+  border:1px solid var(--rule);background:var(--paper);color:var(--ink-70);
+  display:flex;align-items:center;min-height:20px;
+}
+.logo img{
+  height:20px;width:auto;display:block;
+  transition:transform .2s,box-shadow .2s;
+}
+.logo:hover{border-color:var(--ink-45)}
+.ai-block{border:1px solid var(--ink);background:var(--white);padding:clamp(24px,3.2vw,38px)}
+.ai-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;margin-bottom:16px}
+.ai-head h3{font-size:clamp(20px,2.2vw,27px);font-weight:400;letter-spacing:-.02em}
+.ai-tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--paper);background:var(--blue);padding:4px 9px}
+.ai-block>p{font-size:14.5px;color:var(--ink-70);max-width:70ch;margin-bottom:24px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.split div{background:var(--paper);padding:18px 20px}
+.split .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--ink-45);margin-bottom:7px}
+.split .what{font-size:14px;color:var(--ink)}
+
+/* ---------- history ---------- */
+.hist{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.ev{background:var(--paper);padding:clamp(20px,2.6vw,30px)}
+.ev.now{background:var(--white);border-top:3px solid var(--blue)}
+.ev-y{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--ink-45);margin-bottom:14px}
+.ev.now .ev-y{color:var(--blue)}
+.ev h4{font-size:17px;font-weight:500;letter-spacing:-.01em;margin-bottom:9px}
+.ev p{font-size:13.5px;color:var(--ink-70)}
+ 
+/* ---------- labs ---------- */
+.labs{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.lab{background:var(--paper);padding:24px}
+.lab-k{font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--blue);margin-bottom:10px}
+.lab h4{font-size:15px;font-weight:500;margin-bottom:6px}
+.lab p{font-size:13px;color:var(--ink-45)}
+.pd-note{margin-top:18px;font-size:13.5px;color:var(--ink-45);max-width:70ch}
+ 
+/* ---------- contact ---------- */
+.contact h2{font-size:clamp(28px,4.4vw,54px);font-weight:200;letter-spacing:-.035em;line-height:1.14;margin-bottom:26px;max-width:20ch}
+.contact h2 b{font-weight:600}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:26px;margin-top:48px;padding-top:26px;border-top:1px solid var(--rule)}
+.info dt{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink-45);margin-bottom:6px}
+.info dd{font-size:14.5px}
+ 
+/* ---------- footer ---------- */
+.ftr{border-top:1px solid var(--rule);background:var(--ink);color:var(--paper-2)}
+.ftr .wrap{padding-top:44px;padding-bottom:44px}
+.ftr-note{
+  border-left:2px solid var(--blue);padding-left:16px;margin-bottom:32px;
+  font-size:13.5px;color:var(--paper-3);max-width:52ch;
+}
+.ftr-note strong{color:var(--white);font-weight:500}
+.ftr-b{display:flex;flex-wrap:wrap;gap:8px 26px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:#8B918F;text-transform:uppercase}
+ 
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+ 
+/* ---------- responsive ---------- */
+@media(max-width:1080px){
+  .sol{grid-template-columns:52px 1fr;gap:12px 16px}
+  .sol-d{grid-column:2}
+  .sol-lab{grid-column:2;padding-top:2px}
+  .steps{grid-template-columns:1fr 1fr}
+  .hist{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  .spine{display:none}
+  .shell{padding-left:0}
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .figbox{order:-1;max-width:400px}
+  .axes{grid-template-columns:1fr}
+  .hdr-meta{display:none}
+}
+@media(max-width:620px){
+  .steps,.hist,.split{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .gnode{opacity:1;transform:scale(1);animation:none!important}
+  .gedge{stroke-dashoffset:0!important;animation:none!important}
+}
+</style>
 </head>
 <body>
-
-<div class="grid-bg" aria-hidden="true"></div>
-
-<!-- ===== Nav ===== -->
-<header class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="#top" class="nav-brand">
-      <img src="assets/eogram-logo.png" alt="eogram">
-    </a>
-    <nav class="nav-links" id="navLinks">
-      <a href="#about"><em>01</em>회사소개</a>
-      <a href="#values"><em>02</em>핵심가치</a>
-      <a href="#lab"><em>03</em>조직&nbsp;&amp;&nbsp;LAB</a>
-      <a href="#solutions"><em>04</em>솔루션</a>
-      <a href="#history"><em>05</em>연혁</a>
-      <a href="#partners"><em>06</em>파트너</a>
-      <a href="#contact"><em>07</em>Contact</a>
+ 
+<header class="hdr">
+  <div class="hdr-in">
+    <a href="#top" class="mark"><img src="assets/eogram-logo.png" alt="eogram"></a>
+    <span class="hdr-meta">File / eogram inc. — est. 2021 seoul</span>
+    <nav class="nav">
+      <a href="#axes"><i>01</i><span data-i18n="nav.axes">사업</span></a>
+      <a href="#sol"><i>02</i><span data-i18n="nav.sol">솔루션</span></a>
+      <a href="#oda"><i>03</i>ODA</a>
+      <a href="#partners"><i>04</i><span data-i18n="nav.partners">파트너</span></a>
+      <a href="#history"><i>05</i><span data-i18n="nav.history">연혁</span></a>
+      <a href="#labs"><i>06</i><span data-i18n="nav.labs">조직</span></a>
+      <a href="#contact"><i>07</i><span data-i18n="nav.contact">문의</span></a>
     </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="메뉴" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" class="lg" data-lang="ko">KO</button>
+      <button type="button" class="lg" data-lang="en">EN</button>
+    </div>
   </div>
 </header>
-
-<main id="top">
-
-  <!-- ===== Hero ===== -->
-  <section class="hero">
-    <div class="hero-meta">
-      <span>FILE&nbsp;/&nbsp;EOGRAM</span>
-      <span>EST.&nbsp;2021</span>
-      <span>SEOUL,&nbsp;KR</span>
-    </div>
-
-    <h1 class="hero-title">
-      데이터와 AI로<br>
-      비즈니스를 <mark>연구</mark>합니다.
-    </h1>
-    <p class="hero-sub">
-      이오그램은 기업의 비즈니스 성장을 위한 최적의 솔루션을,<br class="lg-only">
-      4개의 전문 LAB이 함께 연구하고 기록하며 만들어갑니다.
-    </p>
-
-    <div class="hero-actions">
-      <a href="#solutions" class="btn btn-primary">솔루션 살펴보기</a>
-      <a href="#contact" class="btn btn-ghost">문의하기</a>
-    </div>
-
-    <div class="hero-index">
-      <span class="hero-index-label">LAB INDEX</span>
-      <div class="hero-index-row">
-        <span>SM LAB</span>
-        <span>R&amp;D</span>
-        <span>ABC LAB</span>
-        <span>P&amp;S LAB</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Trust strip ===== -->
-  <section class="trust">
-    <span class="trust-label">FIG.&nbsp;0 — TECHNOLOGY&nbsp;PARTNERS</span>
-    <div class="trust-row">
-      <img src="assets/partner-microsoft.png" alt="Microsoft">
-      <img src="assets/partner-oracle.png" alt="Oracle">
-      <img src="assets/partner-cloudera.png" alt="Cloudera">
-      <img src="assets/partner-easycore.png" alt="Easycore Solutions">
-    </div>
-  </section>
-
-  <!-- ===== About ===== -->
-  <section class="sheet" id="about">
-    <p class="tag tag-blue">LAB-01 · COMPANY</p>
-    <h2 class="sheet-title">스타트업의 패기와,<br>베테랑의 경험.</h2>
-    <p class="sheet-lead">
-      이오그램(eogram)은 데이터와 디지털 기술을 기반으로, 기업의 비즈니스 성장을 위한
-      최적의 솔루션을 제공합니다. 정답에 안주하지 않고 끊임없이 연구하며, 열정과
-      창의성을 가진 인재들과 함께 한발 앞선 시각으로 문제를 풀어갑니다.
-    </p>
-
-    <div class="note-row">
-      <div class="note">
-        <span class="note-index">NOTE 01</span>
-        <span class="note-term">25gram</span>
-        <p>그램은 24시간을 넘어서 함께하는 그램(기록, 그림, 문서)을 의미합니다.</p>
-      </div>
-      <div class="note">
-        <span class="note-index">NOTE 02</span>
-        <span class="note-term">LAB</span>
-        <p>"LAB"은 원래 연구와 개발을 의미합니다 — 우리는 스스로 연구하는 조직입니다.</p>
-      </div>
-      <div class="note">
-        <span class="note-index">NOTE 03</span>
-        <span class="note-term">PD</span>
-        <p>Product Direction의 약자로, 4개 LAB의 방향을 조율해 하나의 결과물로 모으는 중심 축입니다.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Values ===== -->
-  <section class="sheet sheet-ink" id="values">
-    <p class="tag tag-pink">LAB-02 · PHILOSOPHY</p>
-    <h2 class="sheet-title sheet-title-light">우리가 일하는 방식.</h2>
-
-    <div class="spec-grid">
-      <div class="spec">
-        <span class="spec-corner">01</span>
-        <h3>ONE TEAM</h3>
-        <p>리더는 ONE TEAM의 중심 역할을 합니다. 다양한 의견을 조율하고 팀원들이 하나로 통합되도록 이끕니다. 고객의 성공을 위해서라면 우리는 하나의 팀이 되어야 합니다.</p>
-      </div>
-      <div class="spec">
-        <span class="spec-corner">02</span>
-        <h3>고객의 성공</h3>
-        <p>우리는 고객의 성공을 최우선으로 생각합니다. 고객과의 신뢰를 기반으로 우리의 경험을 살려, 모든 프로젝트를 성공으로 이끌어냅니다.</p>
-      </div>
-      <div class="spec">
-        <span class="spec-corner">03</span>
-        <h3>LAB, 연구하는 조직</h3>
-        <p>"LAB"은 원래 연구와 개발을 의미합니다. 우리는 고객의 비즈니스를 한 단계 성장시키기 위해 끊임없이 연구하며, 생산성과 효율성을 높이는 방법을 스스로 찾아냅니다.</p>
-      </div>
-      <div class="spec">
-        <span class="spec-corner">04</span>
-        <h3>멈추지 않는 성장</h3>
-        <p>열정과 창의성을 가진 젊은 인재들이 함께하여 시대의 흐름을 따라갑니다. 우리는 지금에 머무르지 않고, 새로운 재능과 기술을 받아들이며 다음 단계로 나아갑니다.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Organization / LAB ===== -->
-  <section class="sheet" id="lab">
-    <p class="tag tag-blue">LAB-03 · ORGANIZATION</p>
-    <h2 class="sheet-title">4개의 전문 LAB,<br>하나의 팀.</h2>
-    <p class="sheet-lead">
-      PD(Product Direction)를 중심으로 4개의 LAB이 유기적으로 협력하여
-      전략 수립부터 개발, 솔루션 구축까지 전 과정을 함께합니다.
-    </p>
-
-    <div class="org-wrap">
-      <svg class="org-diagram" viewBox="0 0 940 640" role="img" aria-label="이오그램 조직도: 중앙 PD를 중심으로 SM LAB, R&D, ABC LAB, P&S LAB 4개 조직이 협력한다">
-        <path d="M 220 150 A 280 280 0 0 1 680 150" fill="none" stroke="#C7CCD6" stroke-width="1.5" stroke-dasharray="3 6"/>
-        <path d="M 145 245 A 280 280 0 0 0 145 400" fill="none" stroke="#C7CCD6" stroke-width="1.5" stroke-dasharray="3 6"/>
-        <path d="M 755 245 A 280 280 0 0 1 755 400" fill="none" stroke="#C7CCD6" stroke-width="1.5" stroke-dasharray="3 6"/>
-        <path d="M 220 495 A 280 280 0 0 0 680 495" fill="none" stroke="#C7CCD6" stroke-width="1.5" stroke-dasharray="3 6"/>
-
-        <circle cx="450" cy="320" r="92" fill="#005AB8"/>
-        <text x="450" y="329" text-anchor="middle" fill="#fff" font-size="26" font-weight="700" font-family="'JetBrains Mono', monospace">PD</text>
-
-        <g class="org-node">
-          <circle cx="180" cy="150" r="96" fill="#FAFAF8" stroke="#14181F" stroke-width="1.3"/>
-          <text x="180" y="157" text-anchor="middle" fill="#14181F" font-size="21" font-weight="700" font-family="'JetBrains Mono', monospace">SM LAB</text>
-        </g>
-        <g class="org-node">
-          <circle cx="720" cy="150" r="96" fill="#FAFAF8" stroke="#14181F" stroke-width="1.3"/>
-          <text x="720" y="157" text-anchor="middle" fill="#14181F" font-size="21" font-weight="700" font-family="'JetBrains Mono', monospace">R&amp;D</text>
-        </g>
-        <g class="org-node">
-          <circle cx="180" cy="490" r="96" fill="#FAFAF8" stroke="#14181F" stroke-width="1.3"/>
-          <text x="180" y="497" text-anchor="middle" fill="#14181F" font-size="21" font-weight="700" font-family="'JetBrains Mono', monospace">ABC LAB</text>
-        </g>
-        <g class="org-node">
-          <circle cx="720" cy="490" r="96" fill="#FAFAF8" stroke="#14181F" stroke-width="1.3"/>
-          <text x="720" y="497" text-anchor="middle" fill="#14181F" font-size="19" font-weight="700" font-family="'JetBrains Mono', monospace">P&amp;S LAB</text>
-        </g>
-
-        <text x="10" y="105" fill="#5b616c" font-size="16" font-family="'JetBrains Mono', monospace">전략</text>
-        <text x="10" y="131" fill="#5b616c" font-size="16" font-family="'JetBrains Mono', monospace">마케팅</text>
-
-        <text x="930" y="105" text-anchor="end" fill="#5b616c" font-size="16" font-family="'JetBrains Mono', monospace">RESEARCH</text>
-        <text x="930" y="131" text-anchor="end" fill="#5b616c" font-size="16" font-family="'JetBrains Mono', monospace">DEVELOPMENT</text>
-
-        <text x="10" y="445" fill="#5b616c" font-size="16" font-family="'JetBrains Mono', monospace">AI</text>
-        <text x="10" y="471" fill="#5b616c" font-size="16" font-family="'JetBrains Mono', monospace">BIGDATA &amp; CLOUD</text>
-
-        <text x="930" y="445" text-anchor="end" fill="#5b616c" font-size="16" font-family="'JetBrains Mono', monospace">PROJECT</text>
-        <text x="930" y="471" text-anchor="end" fill="#5b616c" font-size="16" font-family="'JetBrains Mono', monospace">SOLUTION</text>
-      </svg>
-    </div>
-  </section>
-
-  <!-- ===== Solutions ===== -->
-  <section class="sheet sheet-alt" id="solutions">
-    <p class="tag tag-pink">LAB-04 · SOLUTIONS</p>
-    <h2 class="sheet-title">4개 LAB이 만드는<br>솔루션.</h2>
-
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-head">
-          <span class="card-code">SM</span>
-          <span class="card-tab tab-blue"></span>
-        </div>
-        <h3>전략 &amp; 마케팅</h3>
-        <p>데이터 기반의 시장 분석과 브랜드 전략 수립부터 캠페인 기획까지, 기업 마케팅 구축 사업을 리드합니다. 광주은행, 경남은행, 하나은행과의 협업을 통해 현장에서 검증된 전문성을 쌓아왔습니다.</p>
-        <a href="#history">자세히 알아보기 →</a>
-      </div>
-      <div class="card">
-        <div class="card-head">
-          <span class="card-code">RD</span>
-          <span class="card-tab tab-pink"></span>
-        </div>
-        <h3>Research &amp; Development</h3>
-        <p>"LAB"이 의미하는 연구와 개발 본연의 역할에 집중합니다. 새로운 기술과 방법론을 끊임없이 연구하여 실제 프로덕트와 서비스로 구현합니다.</p>
-        <a href="#lab">자세히 알아보기 →</a>
-      </div>
-      <div class="card">
-        <div class="card-head">
-          <span class="card-code">ABC</span>
-          <span class="card-tab tab-blue"></span>
-        </div>
-        <h3>AI, Bigdata &amp; Cloud</h3>
-        <p>생성형 AI 프로젝트, 빅데이터 분석, 클라우드 인프라 구축을 아우르는 기술 기반을 제공합니다. AI 전문가 그룹과의 협업으로 최신 기술 트렌드를 빠르게 비즈니스에 적용합니다.</p>
-        <a href="#history">자세히 알아보기 →</a>
-      </div>
-      <div class="card">
-        <div class="card-head">
-          <span class="card-code">P&amp;S</span>
-          <span class="card-tab tab-pink"></span>
-        </div>
-        <h3>Project &amp; Solution</h3>
-        <p>프로젝트 매니지먼트와 맞춤형 솔루션 구축으로 고객사의 목표를 현실로 만듭니다. 기획부터 구축, 안정화까지 전 과정을 책임집니다.</p>
-        <a href="#contact">자세히 알아보기 →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== History ===== -->
-  <section class="sheet" id="history">
-    <p class="tag tag-blue">LAB-05 · HISTORY</p>
-    <h2 class="sheet-title">이오그램의 여정.</h2>
-
-    <div class="log">
-      <div class="log-row">
-        <span class="log-year">2021</span>
-        <div class="log-body">
-          <h3>여행에 대한 애정으로 시작하다</h3>
-          <p>취향 기반의 여행 커뮤니티를 구축하며 창업했습니다. 이후 새로운 인재들을 만나며 조직을 확장해 나갔습니다.</p>
+ 
+<div class="spine" aria-hidden="true">
+  <div class="spine-line"></div>
+  <div class="spine-nodes">
+    <span class="snode" data-t="top" data-l="Thesis"></span>
+    <span class="snode" data-t="axes" data-l="Two axes"></span>
+    <span class="snode" data-t="sol" data-l="Solutions"></span>
+    <span class="snode" data-t="oda" data-l="ODA"></span>
+    <span class="snode" data-t="partners" data-l="Partners"></span>
+    <span class="snode" data-t="history" data-l="History"></span>
+    <span class="snode" data-t="labs" data-l="Organization"></span>
+    <span class="snode" data-t="contact" data-l="Contact"></span>
+  </div>
+</div>
+ 
+<div class="shell">
+ 
+<!-- ============ HERO ============ -->
+<section id="top" class="sec hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Sec. 00 — Thesis</p>
+        <h1 data-i18n="hero.h1">데이터에 <span class="u">구조</span>를<br>부여합니다.</h1>
+        <p class="lede" data-i18n="hero.lede">
+          흩어진 데이터에 개념과 관계를 부여하는 일 —
+          은행의 고객 세그먼트든, 기업의 지식 그래프든, 개도국의 국가 보건 데이터든.
+          <em>이오그램이 하는 일은 같습니다.</em>
+        </p>
+        <div class="cta-row">
+          <a href="#sol" class="btn btn-a" data-i18n="hero.cta1">솔루션 보기</a>
+          <a href="#oda" class="btn btn-b" data-i18n="hero.cta2">ODA 사업</a>
         </div>
       </div>
-      <div class="log-row">
-        <span class="log-year">2022–23</span>
-        <div class="log-body">
-          <h3>기업 마케팅 구축 사업으로 전환</h3>
-          <p>광주은행, 경남은행, 하나은행과의 협력을 통해 기업 마케팅 구축 프로젝트를 성공적으로 수행했습니다.</p>
+
+      <div class="figbox">
+        <svg id="graph" viewBox="0 0 420 380" role="img" data-i18n-aria="hero.svgAria" aria-label="개념과 관계로 구조화된 지식 그래프">
+          <g id="edges" stroke-linecap="round"></g>
+          <g id="nodes"></g>
+        </svg>
+        <p class="figcap">Fig. 00 — Ontology graph</p>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ============ AXES ============ -->
+<section id="axes" class="sec band">
+  <div class="wrap rv">
+    <p class="eyebrow">Sec. 01 — Two axes</p>
+    <div class="axes">
+      <div class="axis" style="--c:var(--blue)">
+        <p class="axis-k">Domestic</p>
+        <h3 data-i18n="axes.dom.h3">국내 데이터 · AI 사업</h3>
+        <p data-i18n="axes.dom.p">금융·기업의 데이터를 분석 가능한 자산으로 만듭니다. 마케팅 플랫폼 구축부터 이상탐지, 지식 그래프까지.</p>
+        <div class="chips">
+          <span class="chip" data-i18n="axes.dom.chip1">금융</span>
+          <span class="chip" data-i18n="axes.dom.chip2">기업</span>
+          <span class="chip" data-i18n="axes.dom.chip3">광주·경남·하나은행</span>
         </div>
       </div>
-      <div class="log-row">
-        <span class="log-year">2024–now</span>
-        <div class="log-body">
-          <h3>AI 전문가 그룹과의 결합</h3>
-          <p>AI 전문가들과 협력하게 되었고, 현재는 생성형 AI 프로젝트 혁신 과제에 착수하여 진행 중입니다.</p>
-        </div>
-      </div>
-      <div class="log-row">
-        <span class="log-year">next →</span>
-        <div class="log-body">
-          <h3>더 많은 산업의 성장을 함께</h3>
-          <p>여행 커뮤니티에서 시작해 기업 마케팅, 그리고 AI·데이터 솔루션까지 — 이오그램은 여기서 멈추지 않습니다.</p>
+      <div class="axis" style="--c:var(--green)">
+        <p class="axis-k">Global</p>
+        <h3 data-i18n="axes.glo.h3">ODA 디지털 전환</h3>
+        <p data-i18n="axes.glo.p">개도국 공공기관의 IT 현황 진단부터 데이터 거버넌스, 플랫폼 구축, 기술 이전까지 전 과정을 수행합니다.</p>
+        <div class="chips">
+          <span class="chip" data-i18n="axes.glo.chip1">국제개발협력</span>
+          <span class="chip" data-i18n="axes.glo.chip2">보건·복지</span>
+          <span class="chip" data-i18n="axes.glo.chip3">수원국 정부</span>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- ===== Partners ===== -->
-  <section class="sheet sheet-alt" id="partners">
-    <p class="tag tag-pink">LAB-06 · PARTNERS &amp; CLIENTS</p>
-    <h2 class="sheet-title">이오그램과<br>함께하는 기업.</h2>
-
-    <span class="fig-label">FIG. 1 — TECHNOLOGY PARTNERS</span>
-    <div class="logo-grid">
-      <img src="assets/partner-microsoft.png" alt="Microsoft">
-      <img src="assets/partner-oracle.png" alt="Oracle">
-      <img src="assets/partner-cloudera.png" alt="Cloudera">
-      <img src="assets/partner-easycore.png" alt="Easycore Solutions">
+  </div>
+</section>
+ 
+<!-- ============ SOLUTIONS ============ -->
+<section id="sol" class="sec">
+  <div class="wrap rv">
+    <p class="eyebrow">Sec. 02 — Solutions</p>
+ 
+    <div class="sol">
+      <div class="sol-n">SOL-01</div>
+      <div class="sol-t"><h3 data-i18n="sol.1.h3">온톨로지 지식계층</h3><div class="en">Ontology Knowledge Layer</div></div>
+      <div class="sol-d" data-i18n="sol.1.d">
+        LLM이 지어내지 않게 만드는 지식 인프라. 개념과 관계를 먼저 정의하고, Graph-RAG로 검색·추론합니다.
+        <span class="note">보건의료 코드체계 · 금융 상품·규정 · 공공 행정 지식</span>
+      </div>
+      <div class="sol-lab">R&amp;D LAB</div>
     </div>
-
-    <span class="fig-label">FIG. 2 — FINANCIAL CLIENTS</span>
-    <div class="chip-row">
-      <span class="chip">광주은행</span>
-      <span class="chip">경남은행</span>
-      <span class="chip">하나은행</span>
+ 
+    <div class="sol">
+      <div class="sol-n">SOL-02</div>
+      <div class="sol-t"><h3 data-i18n="sol.2.h3">AI 이상탐지 · 패턴분석</h3><div class="en">Anomaly &amp; Pattern Detection</div></div>
+      <div class="sol-d" data-i18n="sol.2.d">
+        정답 라벨 없이도 이상을 찾아냅니다. 쉬모스랩의 비지도학습 엔진에 도메인 설계와 구축 역량을 결합했습니다.
+        <span class="note">부정청구탐지(FDS) · 상권·지점망 최적화 · 미발견 고객 세그먼트</span>
+      </div>
+      <div class="sol-lab">ABC · P&amp;S LAB</div>
     </div>
-  </section>
-
-  <!-- ===== Contact ===== -->
-  <section class="sheet sheet-ink" id="contact">
-    <p class="tag tag-blue">LAB-07 · CONTACT</p>
-    <h2 class="sheet-title sheet-title-light">
-      당신의 비즈니스가<br>AI로 새롭게 도약하는 순간.
+ 
+    <div class="sol">
+      <div class="sol-n">SOL-03</div>
+      <div class="sol-t"><h3>eo-Insight</h3><div class="en">BI Portal</div></div>
+      <div class="sol-d" data-i18n="sol.3.d">
+        오픈소스 기반의 분석 포털. 라이선스에 묶이지 않고, 사업이 끝난 뒤에도 발주기관이 직접 운영할 수 있습니다.
+        <span class="note">표준 대시보드 팩 · 다국어 UI · 권한·조직 모델 · 데이터 표준 연계</span>
+      </div>
+      <div class="sol-lab">ABC · P&amp;S LAB</div>
+    </div>
+ 
+    <div class="sol">
+      <div class="sol-n">SOL-04</div>
+      <div class="sol-t"><h3 data-i18n="sol.4.h3">데이터 플랫폼 구축</h3><div class="en">Data Platform</div></div>
+      <div class="sol-d" data-i18n="sol.4.d">
+        데이터 표준부터 모델링, 웨어하우스, 클라우드 인프라까지. 분석이 가능한 상태로 데이터를 정리합니다.
+        <span class="note">데이터 표준화 · DW / Lake · 클라우드 전환</span>
+      </div>
+      <div class="sol-lab">ABC · P&amp;S LAB</div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ============ ODA ============ -->
+<section id="oda" class="sec band">
+  <div class="wrap rv">
+    <p class="eyebrow">Sec. 03 — ODA Digital Transformation</p>
+    <h2 style="font-size:clamp(24px,3.2vw,40px);font-weight:200;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;max-width:22ch" data-i18n="oda.h2">
+      진단부터 이전까지,<br>한 사업자가 끝냅니다.
     </h2>
-    <p class="sheet-lead sheet-lead-light">
-      프로젝트 문의부터 파트너십 제안까지, 이오그램이 함께합니다.
+    <p style="font-size:15px;color:var(--ink-70);max-width:62ch;margin-bottom:40px" data-i18n="oda.p">
+      정책 보고서는 컨설팅사가, 시스템은 SI가 만듭니다. 그 사이 개념 모델링 단계가 비어 있어 성과로 이어지지 못하는 경우가 많습니다.
+      이오그램은 그 공백을 메웁니다.
     </p>
-    <a href="mailto:eogram@25gram.com" class="btn btn-primary">이메일로 문의하기</a>
 
-    <div class="stamp">
-      <div class="stamp-row">
-        <span>회사명</span>
-        <strong>(주)이오그램 (eogram Inc.)</strong>
+    <div class="steps">
+      <div class="step">
+        <p class="step-n">Step 01</p>
+        <h4 data-i18n="oda.s1.h4">진단</h4>
+        <p class="q" data-i18n="oda.s1.q">"무엇이 문제인가"</p>
+        <ul><li data-i18n="oda.s1.li1">ICT 현황진단</li><li data-i18n="oda.s1.li2">7개 도메인 갭 분석</li><li data-i18n="oda.s1.li3">우선순위 로드맵</li></ul>
       </div>
-      <div class="stamp-row">
-        <span>이메일</span>
-        <strong><a href="mailto:eogram@25gram.com">eogram@25gram.com</a></strong>
+      <div class="step">
+        <p class="step-n">Step 02</p>
+        <h4 data-i18n="oda.s2.h4">설계</h4>
+        <p class="q" data-i18n="oda.s2.q">"어떻게 구조화하나"</p>
+        <ul><li data-i18n="oda.s2.li1">데이터 거버넌스</li><li data-i18n="oda.s2.li2">개념 모델링</li><li data-i18n="oda.s2.li3">표준 용어·코드 체계</li></ul>
       </div>
-      <div class="stamp-row">
-        <span>사업자등록번호</span>
-        <strong>372-88-02084</strong>
+      <div class="step">
+        <p class="step-n">Step 03</p>
+        <h4 data-i18n="oda.s3.h4">구축</h4>
+        <p class="q" data-i18n="oda.s3.q">"무엇을 만드나"</p>
+        <ul><li data-i18n="oda.s3.li1">eo-Insight 공급</li><li data-i18n="oda.s3.li2">데이터 플랫폼 구축</li><li data-i18n="oda.s3.li3">현지화·데이터 연계</li></ul>
+      </div>
+      <div class="step">
+        <p class="step-n">Step 04</p>
+        <h4 data-i18n="oda.s4.h4">이전</h4>
+        <p class="q" data-i18n="oda.s4.q">"어떻게 지속하나"</p>
+        <ul><li>eo Academy</li><li data-i18n="oda.s4.li2">운영자 교육</li><li data-i18n="oda.s4.li3">기술이전·사후 멘토링</li></ul>
       </div>
     </div>
-  </section>
 
-</main>
+    <div class="pull" data-i18n="oda.pull">
+      개발협력 사업의 성패는 준공식이 아니라 <b>3년 뒤</b>에 갈립니다.
+      상용 라이선스는 유지비 부담으로 운영이 끊기기 쉽지만, 오픈소스 기반에 운영 인력까지 길러 두면 시스템은 계속 돌아갑니다.
+      <b>지속가능성과 수원국 오너십</b> — 저희가 오픈소스를 택한 이유입니다.
+    </div>
+  </div>
+</section>
+ 
+<!-- ============ PARTNERS ============ -->
+<section id="partners" class="sec">
+  <div class="wrap rv">
+    <p class="eyebrow">Sec. 04 — Partners &amp; Clients</p>
+ 
+    <div class="fig">
+      <p class="fig-h">Fig. 01 — AI Partnership</p>
+      <div class="ai-block">
+        <div class="ai-head">
+          <h3 data-i18n="partners.ai.h3">쉬모스랩 × 이오그램</h3>
+          <span class="ai-tag">Strategic Partner</span>
+        </div>
+        <p data-i18n="partners.ai.p">
+          비지도학습 기반 패턴·공간분석 AI 엔진에, 도메인 컨설팅과 시스템 구축 역량을 결합합니다.
+          요건 정의부터 아키텍처 설계, 구축, 안정화까지 이오그램이 단일 책임으로 수행합니다.
+        </p>
+        <div class="split">
+          <div><p class="who">Schmoss Lab</p><p class="what" data-i18n="partners.ai.what1">AI 엔진 · 알고리즘 · 모델</p></div>
+          <div><p class="who">eogram</p><p class="what" data-i18n="partners.ai.what2">컨설팅 · 아키텍처 · 구축 · 운영 · 사업관리</p></div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="fig">
+      <p class="fig-h">Fig. 02 — Technology Partners</p>
+      <div class="logos">
+        <span class="logo"><img src="assets/partner-microsoft.png" alt="Microsoft"></span>
+        <span class="logo"><img src="assets/partner-oracle.png" alt="Oracle"></span>
+        <span class="logo"><img src="assets/partner-cloudera.png" alt="Cloudera"></span>
+      </div>
+    </div>
 
-<!-- ===== Footer ===== -->
-<footer class="colophon">
-  <div class="colophon-inner">
-    <p class="colophon-line">이오그램은 데이터와 AI로 기업의 성장을 함께 만들어갑니다.</p>
-    <nav class="colophon-links">
-      <a href="#about">회사소개</a>
-      <a href="#values">핵심가치</a>
-      <a href="#lab">조직 &amp; LAB</a>
-      <a href="#solutions">솔루션</a>
-      <a href="#history">연혁</a>
-      <a href="#partners">파트너</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <hr>
-    <p class="colophon-fine">(주)이오그램 | 사업자 등록번호 : 372-88-02084</p>
-    <p class="colophon-fine">서울특별시 강동구 올림픽로 651, 9층 (주)이오그램 | 메일 : eogram@25gram.com</p>
-    <p class="colophon-copy">PRINTED BY EOGRAM INC. — 2021–2026. ALL RIGHTS RESERVED.</p>
+    <div class="fig">
+      <p class="fig-h">Fig. 03 — Solution Partners</p>
+      <div class="logos"><span class="logo"><img src="assets/partner-easycore.png" alt="이지코어솔루션" data-i18n-alt="partners.easycoreAlt"></span></div>
+    </div>
+
+    <div class="fig" style="margin-bottom:0">
+      <p class="fig-h">Fig. 04 — Clients</p>
+      <div class="logos">
+        <span class="logo" data-i18n="partners.client1">광주은행</span><span class="logo" data-i18n="partners.client2">경남은행</span><span class="logo" data-i18n="partners.client3">하나은행</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HISTORY ============ -->
+<section id="history" class="sec band">
+  <div class="wrap rv">
+    <p class="eyebrow">Sec. 05 — History</p>
+    <div class="hist">
+      <div class="ev">
+        <p class="ev-y">2021</p>
+        <h4 data-i18n="history.1.h4">여행에 대한 애정으로 시작</h4>
+        <p data-i18n="history.1.p">취향 기반 여행 커뮤니티를 구축하며 창업했습니다.</p>
+      </div>
+      <div class="ev">
+        <p class="ev-y">2022 — 23</p>
+        <h4 data-i18n="history.2.h4">기업 마케팅 구축 사업</h4>
+        <p data-i18n="history.2.p">광주은행·경남은행·하나은행과 협력해 마케팅 플랫폼 구축 프로젝트를 수행했습니다.</p>
+      </div>
+      <div class="ev">
+        <p class="ev-y">2024 — 25</p>
+        <h4 data-i18n="history.3.h4">AI·데이터 구축 역량 확장</h4>
+        <p data-i18n="history.3.p">쉬모스랩과 전략적 파트너십을 맺어 비지도학습 AI 엔진을 확보하고, 포스코인터내셔널 빅데이터 플랫폼 구축, IBK기업은행 생성형 AI 실증사업 등으로 사업 영역을 넓혔습니다.</p>
+      </div>
+      <div class="ev now">
+        <p class="ev-y">2026 — Now</p>
+        <h4 data-i18n="history.4.h4">글로벌 ODA 사업 진출</h4>
+        <p data-i18n="history.4.p">캄보디아 NPCA 기능강화사업에 참여해 데이터 플랫폼(DW·FDS·SSBI) 구축을 맡았습니다. 온톨로지 기반 지식체계를 갖추고 eo-Insight를 자체 제품으로 확보했습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ============ LABS ============ -->
+<section id="labs" class="sec">
+  <div class="wrap rv">
+    <p class="eyebrow">Sec. 06 — Organization</p>
+    <div class="labs">
+      <div class="lab"><p class="lab-k">SM</p><h4 data-i18n="labs.sm.h4">전략 &amp; 마케팅</h4><p data-i18n="labs.sm.p">시장 분석 · 브랜드 전략 · 캠페인</p></div>
+      <div class="lab"><p class="lab-k">R&amp;D</p><h4>Research &amp; Development</h4><p data-i18n="labs.rd.p">온톨로지 · 지식그래프 · 방법론</p></div>
+      <div class="lab"><p class="lab-k">ABC</p><h4>AI, Bigdata &amp; Cloud</h4><p data-i18n="labs.abc.p">AI · 빅데이터 · 클라우드 인프라</p></div>
+      <div class="lab"><p class="lab-k">P&amp;S</p><h4>Project &amp; Solution</h4><p data-i18n="labs.ps.p">사업관리 · 구축 · 안정화</p></div>
+    </div>
+    <p class="pd-note" data-i18n="labs.pdnote">
+      PD(Product Direction)를 중심으로 4개 LAB이 유기적으로 협력합니다.
+      "LAB"은 연구와 개발을 의미합니다 — 우리는 스스로 연구하는 조직입니다.
+    </p>
+  </div>
+</section>
+ 
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="sec contact">
+  <div class="wrap rv">
+    <p class="eyebrow">Sec. 07 — Contact</p>
+    <h2 data-i18n="contact.h2">먼저 <b>데이터부터</b> 보겠습니다.</h2>
+    <p style="font-size:15px;color:var(--ink-70);max-width:56ch;margin-bottom:30px" data-i18n="contact.p">
+      프로젝트 문의, 컨소시엄 제안, ODA 사업 협업 — 무엇이든 편하게 보내주세요.
+    </p>
+    <div class="cta-row">
+      <a href="mailto:eogram@25gram.com" class="btn btn-a" data-i18n="contact.btn">이메일 보내기</a>
+    </div>
+    <dl class="info">
+      <div><dt data-i18n="contact.dt1">회사명</dt><dd data-i18n="contact.dd1">㈜이오그램 / eogram Inc.</dd></div>
+      <div><dt data-i18n="contact.dt2">이메일</dt><dd>eogram@25gram.com</dd></div>
+      <div><dt data-i18n="contact.dt3">사업자등록번호</dt><dd>372-88-02084</dd></div>
+      <div><dt data-i18n="contact.dt4">주소</dt><dd data-i18n="contact.dd4">서울특별시 강동구 올림픽로 651, 9층</dd></div>
+    </dl>
+  </div>
+</section>
+ 
+<footer class="ftr">
+  <div class="wrap">
+    <p class="ftr-note" data-i18n="footer.note">
+      <strong>25gram</strong> — 24시간을 넘어 함께 기록하는 1그램.
+      그램은 기록이고, 그림이고, 문서입니다.
+    </p>
+    <div class="ftr-b">
+      <span data-i18n="footer.company">㈜이오그램</span>
+      <span>372-88-02084</span>
+      <span>eogram@25gram.com</span>
+      <span>Printed by eogram inc. — 2021–2026</span>
+    </div>
   </div>
 </footer>
+ 
+</div><!-- /shell -->
+ 
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ 
+  /* ---- ontology graph ---- */
+  var N = [
+    [210,190,5.5],
+    [112,96,4],[62,158,3.2],[152,152,3.2],
+    [318,100,4],[372,164,3.2],[280,152,3.2],
+    [98,268,4],[162,314,3.2],
+    [326,266,4],[266,316,3.2],
+    [210,58,3.2],[210,334,3.2]
+  ];
+  var E = [[0,1],[0,4],[0,7],[0,9],[1,2],[1,3],[3,0],[4,5],[4,6],[6,0],[7,8],[9,10],[0,11],[0,12],[2,7],[5,9]];
+  var ng = document.getElementById('nodes'), eg = document.getElementById('edges');
+ 
+  E.forEach(function(e,i){
+    var a=N[e[0]], b=N[e[1]];
+    var len=Math.hypot(b[0]-a[0], b[1]-a[1]);
+    var l=document.createElementNS('http://www.w3.org/2000/svg','line');
+    l.setAttribute('x1',a[0]); l.setAttribute('y1',a[1]);
+    l.setAttribute('x2',b[0]); l.setAttribute('y2',b[1]);
+    l.setAttribute('class','gedge');
+    l.style.setProperty('--len',len);
+    l.style.setProperty('--d',(0.35+i*0.045)+'s');
+    l.setAttribute('opacity', e.indexOf(0)>-1 ? '.75' : '.4');
+    eg.appendChild(l);
+  });
+ 
+  N.forEach(function(n,i){
+    var c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx',n[0]); c.setAttribute('cy',n[1]); c.setAttribute('r',n[2]);
+    c.setAttribute('class','gnode');
+    c.setAttribute('fill', i===0 ? '#1B4DE4' : (n[2]>=4 ? '#14181A' : '#EDEEE9'));
+    c.setAttribute('stroke', i===0 ? '#1B4DE4' : '#14181A');
+    c.setAttribute('stroke-width','1');
+    c.style.setProperty('--d',(i*0.055)+'s');
+    ng.appendChild(c);
+  });
+ 
+  if(!reduce){ requestAnimationFrame(function(){ document.getElementById('graph').classList.add('run'); }); }
+ 
+  /* ---- reveal ---- */
+  var rvs = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window && !reduce){
+    var ro = new IntersectionObserver(function(es){
+      es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); ro.unobserve(en.target); } });
+    },{threshold:.12});
+    rvs.forEach(function(el){ ro.observe(el); });
+  } else {
+    rvs.forEach(function(el){ el.classList.add('in'); });
+  }
+  // safety net: any in-page link should show its target immediately, even if the
+  // observer hasn't fired yet (e.g. jumping straight to a section)
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href^="#"]');
+    if(!a) return;
+    var t = document.getElementById(a.getAttribute('href').slice(1));
+    var rv = t && (t.classList.contains('rv') ? t : t.querySelector('.rv'));
+    if(rv) rv.classList.add('in');
+  });
+  setTimeout(function(){ rvs.forEach(function(el){ el.classList.add('in'); }); }, 2000);
+ 
+  /* ---- spine scroll-spy ---- */
+  var nodes = [].slice.call(document.querySelectorAll('.snode'));
+  var targets = nodes.map(function(n){ return document.getElementById(n.dataset.t); });
+  nodes.forEach(function(n,i){
+    n.addEventListener('click', function(){ if(targets[i]) targets[i].scrollIntoView({behavior: reduce?'auto':'smooth'}); });
+    n.style.cursor='pointer';
+  });
+  function spy(){
+    var y = window.scrollY + window.innerHeight*0.35, best=0;
+    targets.forEach(function(t,i){ if(t && t.offsetTop <= y) best=i; });
+    nodes.forEach(function(n,i){ n.classList.toggle('on', i===best); });
+  }
+  window.addEventListener('scroll', spy, {passive:true});
+  window.addEventListener('resize', spy);
+  spy();
 
-<script src="js/main.js"></script>
+  /* ---- i18n (KO / EN) ---- */
+  var META = {
+    title: {
+      ko: '이오그램 | eogram — 데이터에 구조를 부여합니다',
+      en: 'eogram — We Give Data Structure'
+    },
+    desc: {
+      ko: '㈜이오그램은 온톨로지·AI·데이터 거버넌스로 국내 기업과 개도국 공공의 데이터를 구조화합니다.',
+      en: 'eogram structures data for domestic enterprises and public institutions in developing countries through ontology, AI, and data governance.'
+    }
+  };
+  var I18N = {
+    'nav.axes': {ko:'사업', en:'Business'},
+    'nav.sol': {ko:'솔루션', en:'Solutions'},
+    'nav.partners': {ko:'파트너', en:'Partners'},
+    'nav.history': {ko:'연혁', en:'History'},
+    'nav.labs': {ko:'조직', en:'Organization'},
+    'nav.contact': {ko:'문의', en:'Contact'},
+
+    'hero.h1': {ko:'데이터에 <span class="u">구조</span>를<br>부여합니다.', en:'We give <span class="u">structure</span><br>to data.'},
+    'hero.lede': {
+      ko:'흩어진 데이터에 개념과 관계를 부여하는 일 — 은행의 고객 세그먼트든, 기업의 지식 그래프든, 개도국의 국가 보건 데이터든. <em>이오그램이 하는 일은 같습니다.</em>',
+      en:'Giving scattered data concepts and relationships — a bank’s customer segments, an enterprise’s knowledge graph, or a developing country’s national health data. <em>eogram does the same work, every time.</em>'
+    },
+    'hero.cta1': {ko:'솔루션 보기', en:'View Solutions'},
+    'hero.cta2': {ko:'ODA 사업', en:'ODA Business'},
+    'hero.svgAria': {ko:'개념과 관계로 구조화된 지식 그래프', en:'A knowledge graph structured by concepts and relationships'},
+
+    'axes.dom.h3': {ko:'국내 데이터 · AI 사업', en:'Domestic Data &amp; AI'},
+    'axes.dom.p': {ko:'금융·기업의 데이터를 분석 가능한 자산으로 만듭니다. 마케팅 플랫폼 구축부터 이상탐지, 지식 그래프까지.', en:'We turn financial and enterprise data into analyzable assets — from marketing-platform builds to anomaly detection and knowledge graphs.'},
+    'axes.dom.chip1': {ko:'금융', en:'Finance'},
+    'axes.dom.chip2': {ko:'기업', en:'Enterprise'},
+    'axes.dom.chip3': {ko:'광주·경남·하나은행', en:'Gwangju / Gyeongnam / Hana Bank'},
+    'axes.glo.h3': {ko:'ODA 디지털 전환', en:'ODA Digital Transformation'},
+    'axes.glo.p': {ko:'개도국 공공기관의 IT 현황 진단부터 데이터 거버넌스, 플랫폼 구축, 기술 이전까지 전 과정을 수행합니다.', en:'We run the full cycle for public institutions in developing countries — from IT diagnostics to data governance, platform delivery, and technology transfer.'},
+    'axes.glo.chip1': {ko:'국제개발협력', en:'International Development Cooperation'},
+    'axes.glo.chip2': {ko:'보건·복지', en:'Health &amp; Welfare'},
+    'axes.glo.chip3': {ko:'수원국 정부', en:'Partner Governments'},
+
+    'sol.1.h3': {ko:'온톨로지 지식계층', en:'Ontology Layer'},
+    'sol.1.d': {ko:'LLM이 지어내지 않게 만드는 지식 인프라. 개념과 관계를 먼저 정의하고, Graph-RAG로 검색·추론합니다.<span class="note">보건의료 코드체계 · 금융 상품·규정 · 공공 행정 지식</span>', en:'Knowledge infrastructure that keeps LLMs from making things up. We define concepts and relationships first, then search and reason over them with Graph-RAG.<span class="note">Healthcare code systems · Financial products &amp; regulations · Public administrative knowledge</span>'},
+    'sol.2.h3': {ko:'AI 이상탐지 · 패턴분석', en:'AI Anomaly Detection'},
+    'sol.2.d': {ko:'정답 라벨 없이도 이상을 찾아냅니다. 쉬모스랩의 비지도학습 엔진에 도메인 설계와 구축 역량을 결합했습니다.<span class="note">부정청구탐지(FDS) · 상권·지점망 최적화 · 미발견 고객 세그먼트</span>', en:'Finds anomalies without labeled ground truth. We combine Schmoss Lab’s unsupervised-learning engine with our own domain design and delivery capability.<span class="note">Fraud detection (FDS) · Trade-area &amp; branch-network optimization · Undiscovered customer segments</span>'},
+    'sol.3.d': {ko:'오픈소스 기반의 분석 포털. 라이선스에 묶이지 않고, 사업이 끝난 뒤에도 발주기관이 직접 운영할 수 있습니다.<span class="note">표준 대시보드 팩 · 다국어 UI · 권한·조직 모델 · 데이터 표준 연계</span>', en:'An open-source-based analytics portal. Free of license lock-in, so the client organization can keep running it themselves after the project ends.<span class="note">Standard dashboard packs · Multilingual UI · Role &amp; org model · Data-standard integration</span>'},
+    'sol.4.h3': {ko:'데이터 플랫폼 구축', en:'Data Platform Build'},
+    'sol.4.d': {ko:'데이터 표준부터 모델링, 웨어하우스, 클라우드 인프라까지. 분석이 가능한 상태로 데이터를 정리합니다.<span class="note">데이터 표준화 · DW / Lake · 클라우드 전환</span>', en:'From data standards and modeling to warehouses and cloud infrastructure — we get data into an analysis-ready state.<span class="note">Data standardization · DW / Lake · Cloud migration</span>'},
+
+    'oda.h2': {ko:'진단부터 이전까지,<br>한 사업자가 끝냅니다.', en:'From diagnosis to transfer,<br>one vendor sees it through.'},
+    'oda.p': {ko:'정책 보고서는 컨설팅사가, 시스템은 SI가 만듭니다. 그 사이 개념 모델링 단계가 비어 있어 성과로 이어지지 못하는 경우가 많습니다. 이오그램은 그 공백을 메웁니다.', en:'Consultancies write the policy reports; systems integrators build the systems. The conceptual-modeling step in between often goes missing, and results suffer for it. eogram fills that gap.'},
+    'oda.s1.h4': {ko:'진단', en:'Diagnose'},
+    'oda.s1.q': {ko:'"무엇이 문제인가"', en:'“What’s the problem?”'},
+    'oda.s1.li1': {ko:'ICT 현황진단', en:'ICT status assessment'},
+    'oda.s1.li2': {ko:'7개 도메인 갭 분석', en:'7-domain gap analysis'},
+    'oda.s1.li3': {ko:'우선순위 로드맵', en:'Prioritized roadmap'},
+    'oda.s2.h4': {ko:'설계', en:'Design'},
+    'oda.s2.q': {ko:'"어떻게 구조화하나"', en:'“How do we structure it?”'},
+    'oda.s2.li1': {ko:'데이터 거버넌스', en:'Data governance'},
+    'oda.s2.li2': {ko:'개념 모델링', en:'Conceptual modeling'},
+    'oda.s2.li3': {ko:'표준 용어·코드 체계', en:'Standard terminology &amp; code systems'},
+    'oda.s3.h4': {ko:'구축', en:'Build'},
+    'oda.s3.q': {ko:'"무엇을 만드나"', en:'“What do we build?”'},
+    'oda.s3.li1': {ko:'eo-Insight 공급', en:'eo-Insight deployment'},
+    'oda.s3.li2': {ko:'데이터 플랫폼 구축', en:'Data platform build'},
+    'oda.s3.li3': {ko:'현지화·데이터 연계', en:'Localization &amp; data integration'},
+    'oda.s4.h4': {ko:'이전', en:'Transfer'},
+    'oda.s4.q': {ko:'"어떻게 지속하나"', en:'“How does it last?”'},
+    'oda.s4.li2': {ko:'운영자 교육', en:'Operator training'},
+    'oda.s4.li3': {ko:'기술이전·사후 멘토링', en:'Technology transfer &amp; post-launch mentoring'},
+    'oda.pull': {
+      ko:'개발협력 사업의 성패는 준공식이 아니라 <b>3년 뒤</b>에 갈립니다. 상용 라이선스는 유지비 부담으로 운영이 끊기기 쉽지만, 오픈소스 기반에 운영 인력까지 길러 두면 시스템은 계속 돌아갑니다. <b>지속가능성과 수원국 오너십</b> — 저희가 오픈소스를 택한 이유입니다.',
+      en:'A development-cooperation project’s success isn’t decided at the opening ceremony — it’s decided <b>three years later</b>. Commercial licenses tend to lapse under maintenance costs, but an open-source foundation with trained local operators keeps running. <b>Sustainability and recipient-country ownership</b> — that’s why we chose open source.'
+    },
+
+    'partners.ai.h3': {ko:'쉬모스랩 × 이오그램', en:'Schmoss Lab × eogram'},
+    'partners.ai.p': {ko:'비지도학습 기반 패턴·공간분석 AI 엔진에, 도메인 컨설팅과 시스템 구축 역량을 결합합니다. 요건 정의부터 아키텍처 설계, 구축, 안정화까지 이오그램이 단일 책임으로 수행합니다.', en:'We combine an unsupervised-learning pattern and spatial-analysis AI engine with domain consulting and delivery capability. eogram carries single-point accountability from requirements through architecture, build, and stabilization.'},
+    'partners.ai.what1': {ko:'AI 엔진 · 알고리즘 · 모델', en:'AI engine · Algorithms · Models'},
+    'partners.ai.what2': {ko:'컨설팅 · 아키텍처 · 구축 · 운영 · 사업관리', en:'Consulting · Architecture · Build · Operations · Program management'},
+    'partners.easycoreAlt': {ko:'이지코어솔루션', en:'Easycore Solutions'},
+    'partners.client1': {ko:'광주은행', en:'Gwangju Bank'},
+    'partners.client2': {ko:'경남은행', en:'Gyeongnam Bank'},
+    'partners.client3': {ko:'하나은행', en:'Hana Bank'},
+
+    'history.1.h4': {ko:'여행에 대한 애정으로 시작', en:'Started out of a love for travel'},
+    'history.1.p': {ko:'취향 기반 여행 커뮤니티를 구축하며 창업했습니다.', en:'Founded while building a taste-based travel community.'},
+    'history.2.h4': {ko:'기업 마케팅 구축 사업', en:'Enterprise marketing platform builds'},
+    'history.2.p': {ko:'광주은행·경남은행·하나은행과 협력해 마케팅 플랫폼 구축 프로젝트를 수행했습니다.', en:'Delivered marketing-platform build projects with Gwangju Bank, Gyeongnam Bank, and Hana Bank.'},
+    'history.3.h4': {ko:'AI·데이터 구축 역량 확장', en:'Expanded AI &amp; data delivery capability'},
+    'history.3.p': {ko:'쉬모스랩과 전략적 파트너십을 맺어 비지도학습 AI 엔진을 확보하고, 포스코인터내셔널 빅데이터 플랫폼 구축, IBK기업은행 생성형 AI 실증사업 등으로 사업 영역을 넓혔습니다.', en:'Formed a strategic partnership with Schmoss Lab to secure an unsupervised-learning AI engine, and expanded into new territory with the POSCO International big-data platform build, the IBK generative-AI proof of concept, and more.'},
+    'history.4.h4': {ko:'글로벌 ODA 사업 진출', en:'Entered global ODA business'},
+    'history.4.p': {ko:'캄보디아 NPCA 기능강화사업에 참여해 데이터 플랫폼(DW·FDS·SSBI) 구축을 맡았습니다. 온톨로지 기반 지식체계를 갖추고 eo-Insight를 자체 제품으로 확보했습니다.', en:'Joined Cambodia’s NPCA capacity-strengthening project, taking on the data platform build (DW · FDS · SSBI). Built out an ontology-based knowledge system and secured eo-Insight as our own product.'},
+
+    'labs.sm.h4': {ko:'전략 &amp; 마케팅', en:'Strategy &amp; Marketing'},
+    'labs.sm.p': {ko:'시장 분석 · 브랜드 전략 · 캠페인', en:'Market analysis · Brand strategy · Campaigns'},
+    'labs.rd.p': {ko:'온톨로지 · 지식그래프 · 방법론', en:'Ontology · Knowledge graphs · Methodology'},
+    'labs.abc.p': {ko:'AI · 빅데이터 · 클라우드 인프라', en:'AI · Big data · Cloud infrastructure'},
+    'labs.ps.p': {ko:'사업관리 · 구축 · 안정화', en:'Program management · Build · Stabilization'},
+    'labs.pdnote': {ko:'PD(Product Direction)를 중심으로 4개 LAB이 유기적으로 협력합니다. "LAB"은 연구와 개발을 의미합니다 — 우리는 스스로 연구하는 조직입니다.', en:'The four LABs work together around a central PD (Product Direction) function. “LAB” stands for research and development — we’re an organization that researches itself.'},
+
+    'contact.h2': {ko:'먼저 <b>데이터부터</b> 보겠습니다.', en:'Let’s start by looking at <b>your data</b>.'},
+    'contact.p': {ko:'프로젝트 문의, 컨소시엄 제안, ODA 사업 협업 — 무엇이든 편하게 보내주세요.', en:'Project inquiries, consortium proposals, ODA collaboration — reach out any time.'},
+    'contact.btn': {ko:'이메일 보내기', en:'Send an Email'},
+    'contact.dt1': {ko:'회사명', en:'Company'},
+    'contact.dd1': {ko:'㈜이오그램 / eogram Inc.', en:'eogram Inc.'},
+    'contact.dt2': {ko:'이메일', en:'Email'},
+    'contact.dt3': {ko:'사업자등록번호', en:'Business Reg. No.'},
+    'contact.dt4': {ko:'주소', en:'Address'},
+    'contact.dd4': {ko:'서울특별시 강동구 올림픽로 651, 9층', en:'9F, 651 Olympic-ro, Gangdong-gu, Seoul, Korea'},
+
+    'footer.note': {ko:'<strong>25gram</strong> — 24시간을 넘어 함께 기록하는 1그램. 그램은 기록이고, 그림이고, 문서입니다.', en:'<strong>25gram</strong> — one more gram, recorded together beyond the 24 hours in a day. A gram is a record, a drawing, a document.'},
+    'footer.company': {ko:'㈜이오그램', en:'eogram Inc.'}
+  };
+
+  function applyLang(lang){
+    document.documentElement.lang = lang;
+    document.title = META.title[lang];
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc) metaDesc.setAttribute('content', META.desc[lang]);
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var d = I18N[el.getAttribute('data-i18n')];
+      if(d && d[lang] != null) el.innerHTML = d[lang];
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(function(el){
+      var d = I18N[el.getAttribute('data-i18n-alt')];
+      if(d && d[lang] != null) el.setAttribute('alt', d[lang]);
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function(el){
+      var d = I18N[el.getAttribute('data-i18n-aria')];
+      if(d && d[lang] != null) el.setAttribute('aria-label', d[lang]);
+    });
+    document.querySelectorAll('.lg').forEach(function(b){
+      b.classList.toggle('on', b.getAttribute('data-lang') === lang);
+    });
+    try{ localStorage.setItem('eogram-lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('.lg').forEach(function(b){
+    b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); });
+  });
+  var savedLang = 'ko';
+  try{ savedLang = localStorage.getItem('eogram-lang') || 'ko'; }catch(e){}
+  applyLang(savedLang);
+})();
+</script>
 </body>
 </html>
+ 
