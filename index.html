@@ -37,6 +37,42 @@ body{
   overflow-x:hidden;
 }
 a{color:inherit;text-decoration:none}
+
+/* ---------- background texture ---------- */
+.bg-tex{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:radial-gradient(var(--rule) 1px,transparent 1px);
+  background-size:26px 26px;
+  opacity:.55;
+}
+.hero{position:relative}
+.hero::before{
+  content:"";position:absolute;top:-60px;left:-60px;
+  width:clamp(220px,42vw,440px);height:clamp(220px,42vw,440px);z-index:0;
+  background:radial-gradient(circle,color-mix(in srgb,var(--blue) 20%,transparent),transparent 72%);
+  pointer-events:none;
+}
+.hero .wrap{position:relative;z-index:1}
+.contact{position:relative;overflow:hidden}
+.contact::before{
+  content:"";position:absolute;bottom:-80px;right:-60px;
+  width:clamp(220px,42vw,440px);height:clamp(220px,42vw,440px);z-index:0;
+  background:radial-gradient(circle,color-mix(in srgb,var(--green) 19%,transparent),transparent 72%);
+  pointer-events:none;
+}
+.contact .wrap{position:relative;z-index:1}
+#oda{position:relative;overflow:hidden}
+#oda .wrap{position:relative;z-index:1}
+#labs{position:relative;overflow:hidden}
+#labs .wrap{position:relative;z-index:1}
+.deco-graph{position:absolute;z-index:0;pointer-events:none;opacity:.4}
+.deco-oda{top:-70px;right:-70px;width:min(50vw,420px);height:auto}
+.deco-labs{bottom:-60px;left:-70px;width:min(50vw,420px);height:auto}
+@media(max-width:900px){
+  .deco-graph{opacity:.32}
+  .deco-oda{top:-20px;right:-30px;width:min(58vw,260px)}
+  .deco-labs{bottom:-20px;left:-30px;width:min(58vw,260px)}
+}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
  
 /* ---------- utility type ---------- */
@@ -64,6 +100,10 @@ a{color:inherit;text-decoration:none}
   font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink-45);
   text-transform:uppercase;white-space:nowrap;
 }
+.hdr-sec{
+  display:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--blue);
+  text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;
+}
 .nav{margin-left:auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
 .nav a{
@@ -73,7 +113,16 @@ a{color:inherit;text-decoration:none}
 }
 .nav a i{font-style:normal;font-family:var(--mono);color:var(--blue);margin-right:6px;font-size:10px}
 .nav a:hover{color:var(--ink);border-color:var(--rule);background:var(--white)}
+.nav a.on{color:var(--white);background:var(--blue);border-color:var(--blue)}
+.nav a.on i{color:var(--white)}
 .lang-switch{display:flex;gap:2px;margin-left:16px;flex-shrink:0}
+.nav-toggle{
+  display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;
+  width:30px;height:30px;background:none;border:none;cursor:pointer;flex-shrink:0;
+}
+.nav-toggle span{height:1.3px;width:18px;background:var(--ink);transition:transform .25s ease}
+.hdr.nav-open .nav-toggle span:first-child{transform:translateY(3.15px) rotate(45deg)}
+.hdr.nav-open .nav-toggle span:last-child{transform:translateY(-3.15px) rotate(-45deg)}
 .lg{
   font-family:var(--mono);font-size:10px;letter-spacing:.08em;
   padding:6px 9px;border:1px solid var(--rule);background:transparent;cursor:pointer;
@@ -114,7 +163,7 @@ a{color:inherit;text-decoration:none}
  
 /* ---------- hero ---------- */
 .hero{padding:clamp(52px,8vw,104px) 0 clamp(56px,8vw,108px)}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,5vw,72px);align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:center}
 h1{
   font-size:clamp(38px,6.4vw,80px);font-weight:200;line-height:1.08;
   letter-spacing:-.035em;margin-bottom:30px;
@@ -136,7 +185,7 @@ h1 .u{
 .btn-b:hover{background:var(--ink);color:var(--paper)}
  
 .figbox{position:relative}
-.figbox svg{width:100%;height:auto;display:block;overflow:visible}
+.figbox svg{width:110%;height:auto;display:block;overflow:visible;margin-left:-5%}
 .figcap{margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.13em;color:var(--ink-45);text-transform:uppercase}
 .gnode{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(0)}
 .gedge{stroke:var(--ink-45);stroke-width:.8;fill:none;stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
@@ -260,9 +309,24 @@ h1 .u{
   .spine{display:none}
   .shell{padding-left:0}
   .hero-grid{grid-template-columns:1fr;gap:36px}
-  .figbox{order:-1;max-width:400px}
+  .figbox{max-width:400px}
   .axes{grid-template-columns:1fr}
   .hdr-meta{display:none}
+  .hdr-sec{display:block}
+  .lang-switch{margin-left:auto}
+  .nav-toggle{display:flex}
+  .nav{
+    display:none;position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;gap:0;overflow-x:visible;
+    background:var(--paper);border-bottom:1px solid var(--rule);
+    padding:4px var(--pad) 12px;
+    max-height:calc(100vh - 58px);overflow-y:auto;
+  }
+  .hdr.nav-open .nav{display:flex}
+  .nav a{padding:15px 4px;border-bottom:1px solid var(--rule);font-size:15px}
+  .nav a.on{background:none;color:var(--blue);border-color:var(--rule)}
+  .nav a.on i{color:var(--blue)}
+  .nav a:last-child{border-bottom:0}
 }
 @media(max-width:620px){
   .steps,.hist,.split{grid-template-columns:1fr}
@@ -276,12 +340,15 @@ h1 .u{
 </style>
 </head>
 <body>
- 
+
+<div class="bg-tex" aria-hidden="true"></div>
+
 <header class="hdr">
   <div class="hdr-in">
     <a href="#top" class="mark"><img src="assets/eogram-logo.png" alt="eogram"></a>
     <span class="hdr-meta">File / eogram inc. — est. 2021 seoul</span>
-    <nav class="nav">
+    <span class="hdr-sec" id="hdrSec" aria-hidden="true"></span>
+    <nav class="nav" id="mainNav">
       <a href="#axes"><i>01</i><span data-i18n="nav.axes">사업</span></a>
       <a href="#sol"><i>02</i><span data-i18n="nav.sol">솔루션</span></a>
       <a href="#oda"><i>03</i>ODA</a>
@@ -294,6 +361,9 @@ h1 .u{
       <button type="button" class="lg" data-lang="ko">KO</button>
       <button type="button" class="lg" data-lang="en">EN</button>
     </div>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span>
+    </button>
   </div>
 </header>
  
@@ -420,6 +490,39 @@ h1 .u{
  
 <!-- ============ ODA ============ -->
 <section id="oda" class="sec band">
+  <svg class="deco-graph deco-oda" viewBox="0 0 460 460" aria-hidden="true">
+    <g fill="none" stroke="var(--ink-45)" stroke-width="1.4">
+      <line x1="140" y1="180" x2="320" y2="130"/>
+      <line x1="320" y1="130" x2="250" y2="340"/>
+      <line x1="250" y1="340" x2="140" y2="180"/>
+      <line x1="140" y1="180" x2="60" y2="120"/>
+      <line x1="140" y1="180" x2="80" y2="250"/>
+      <line x1="320" y1="130" x2="280" y2="50"/>
+      <line x1="320" y1="130" x2="410" y2="110"/>
+      <line x1="250" y1="340" x2="350" y2="400"/>
+      <line x1="250" y1="340" x2="160" y2="390"/>
+      <line x1="140" y1="180" x2="30" y2="300"/>
+      <line x1="320" y1="130" x2="420" y2="240"/>
+    </g>
+    <g>
+      <circle cx="140" cy="180" r="6.5" fill="var(--green)"/>
+      <circle cx="320" cy="130" r="6.5" fill="var(--blue)"/>
+      <circle cx="250" cy="340" r="6.5" fill="var(--green)"/>
+    </g>
+    <g fill="var(--ink)">
+      <circle cx="60" cy="120" r="3.4"/>
+      <circle cx="80" cy="250" r="3.4"/>
+      <circle cx="280" cy="50" r="3.4"/>
+      <circle cx="410" cy="110" r="3.4"/>
+      <circle cx="350" cy="400" r="3.4"/>
+      <circle cx="160" cy="390" r="3.4"/>
+    </g>
+    <g fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2">
+      <circle cx="30" cy="300" r="3"/>
+      <circle cx="420" cy="240" r="3"/>
+      <circle cx="240" cy="80" r="3"/>
+    </g>
+  </svg>
   <div class="wrap rv">
     <p class="eyebrow">Sec. 03 — ODA Digital Transformation</p>
     <h2 style="font-size:clamp(24px,3.2vw,40px);font-weight:200;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;max-width:22ch" data-i18n="oda.h2">
@@ -499,13 +602,16 @@ h1 .u{
 
     <div class="fig">
       <p class="fig-h">Fig. 03 — Solution Partners</p>
-      <div class="logos"><span class="logo"><img src="assets/partner-easycore.png" alt="이지코어솔루션" data-i18n-alt="partners.easycoreAlt"></span></div>
+      <div class="logos">
+        <span class="logo"><img src="assets/partner-easycore.png" alt="이지코어솔루션" data-i18n-alt="partners.easycoreAlt"></span>
+        <span class="logo" data-i18n="partners.schmoss">쉬모스랩</span>
+      </div>
     </div>
 
     <div class="fig" style="margin-bottom:0">
       <p class="fig-h">Fig. 04 — Clients</p>
       <div class="logos">
-        <span class="logo" data-i18n="partners.client1">광주은행</span><span class="logo" data-i18n="partners.client2">경남은행</span><span class="logo" data-i18n="partners.client3">하나은행</span>
+        <span class="logo" data-i18n="partners.client1">광주은행</span><span class="logo" data-i18n="partners.client2">경남은행</span><span class="logo" data-i18n="partners.client3">하나은행</span><span class="logo" data-i18n="partners.client4">IBK기업은행</span><span class="logo" data-i18n="partners.client5">포스코인터내셔널</span>
       </div>
     </div>
   </div>
@@ -542,6 +648,35 @@ h1 .u{
  
 <!-- ============ LABS ============ -->
 <section id="labs" class="sec">
+  <svg class="deco-graph deco-labs" viewBox="0 0 460 460" aria-hidden="true">
+    <g fill="none" stroke="var(--blue)" stroke-width="1.4">
+      <line x1="230" y1="230" x2="90" y2="110"/>
+      <line x1="230" y1="230" x2="370" y2="110"/>
+      <line x1="230" y1="230" x2="90" y2="350"/>
+      <line x1="230" y1="230" x2="370" y2="350"/>
+      <line x1="90" y1="110" x2="40" y2="60"/>
+      <line x1="90" y1="110" x2="60" y2="170"/>
+      <line x1="370" y1="110" x2="420" y2="60"/>
+      <line x1="370" y1="110" x2="410" y2="170"/>
+      <line x1="90" y1="350" x2="40" y2="400"/>
+      <line x1="370" y1="350" x2="420" y2="400"/>
+    </g>
+    <circle cx="230" cy="230" r="7.5" fill="var(--blue)"/>
+    <circle cx="90" cy="110" r="4.2" fill="var(--green)"/>
+    <circle cx="370" cy="350" r="4.2" fill="var(--green)"/>
+    <g fill="var(--ink)">
+      <circle cx="370" cy="110" r="4"/>
+      <circle cx="90" cy="350" r="4"/>
+    </g>
+    <g fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2">
+      <circle cx="40" cy="60" r="3"/>
+      <circle cx="60" cy="170" r="3"/>
+      <circle cx="420" cy="60" r="3"/>
+      <circle cx="410" cy="170" r="3"/>
+      <circle cx="40" cy="400" r="3"/>
+      <circle cx="420" cy="400" r="3"/>
+    </g>
+  </svg>
   <div class="wrap rv">
     <p class="eyebrow">Sec. 06 — Organization</p>
     <div class="labs">
@@ -657,21 +792,54 @@ h1 .u{
   });
   setTimeout(function(){ rvs.forEach(function(el){ el.classList.add('in'); }); }, 2000);
  
-  /* ---- spine scroll-spy ---- */
+  /* ---- spine + top-nav scroll-spy (single source of truth: targets/best) ---- */
   var nodes = [].slice.call(document.querySelectorAll('.snode'));
   var targets = nodes.map(function(n){ return document.getElementById(n.dataset.t); });
+  var navLinks = [].slice.call(document.querySelectorAll('.nav a'));
+  var hdrSec = document.getElementById('hdrSec');
   nodes.forEach(function(n,i){
     n.addEventListener('click', function(){ if(targets[i]) targets[i].scrollIntoView({behavior: reduce?'auto':'smooth'}); });
     n.style.cursor='pointer';
   });
   function spy(){
-    var y = window.scrollY + window.innerHeight*0.35, best=0;
-    targets.forEach(function(t,i){ if(t && t.offsetTop <= y) best=i; });
+    var vh = window.innerHeight, best=0, bestRatio=-1;
+    targets.forEach(function(t,i){
+      if(!t) return;
+      var r = t.getBoundingClientRect();
+      var visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
+      var ratio = r.height > 0 ? visible / r.height : 0;
+      if(ratio > bestRatio){ bestRatio = ratio; best = i; }
+    });
     nodes.forEach(function(n,i){ n.classList.toggle('on', i===best); });
+    var curId = targets[best] && targets[best].id;
+    navLinks.forEach(function(a){
+      a.classList.toggle('on', !!curId && a.getAttribute('href') === '#'+curId);
+    });
+    if(hdrSec && nodes[best]){
+      var num = best<10 ? '0'+best : ''+best;
+      hdrSec.textContent = num+' — '+(nodes[best].dataset.l || '').toUpperCase();
+    }
   }
   window.addEventListener('scroll', spy, {passive:true});
   window.addEventListener('resize', spy);
   spy();
+
+  /* ---- mobile nav toggle ---- */
+  var hdr = document.querySelector('.hdr');
+  var navToggle = document.getElementById('navToggle');
+  var mainNav = document.getElementById('mainNav');
+  if(navToggle && hdr && mainNav){
+    navToggle.addEventListener('click', function(){
+      var open = hdr.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mainNav.addEventListener('click', function(e){
+      if(e.target.closest('a')){
+        hdr.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 
   /* ---- i18n (KO / EN) ---- */
   var META = {
@@ -751,9 +919,12 @@ h1 .u{
     'partners.ai.what1': {ko:'AI 엔진 · 알고리즘 · 모델', en:'AI engine · Algorithms · Models'},
     'partners.ai.what2': {ko:'컨설팅 · 아키텍처 · 구축 · 운영 · 사업관리', en:'Consulting · Architecture · Build · Operations · Program management'},
     'partners.easycoreAlt': {ko:'이지코어솔루션', en:'Easycore Solutions'},
+    'partners.schmoss': {ko:'쉬모스랩', en:'Schmoss Lab'},
     'partners.client1': {ko:'광주은행', en:'Gwangju Bank'},
     'partners.client2': {ko:'경남은행', en:'Gyeongnam Bank'},
     'partners.client3': {ko:'하나은행', en:'Hana Bank'},
+    'partners.client4': {ko:'IBK기업은행', en:'IBK Bank'},
+    'partners.client5': {ko:'포스코인터내셔널', en:'POSCO International'},
 
     'history.1.h4': {ko:'여행에 대한 애정으로 시작', en:'Started out of a love for travel'},
     'history.1.p': {ko:'취향 기반 여행 커뮤니티를 구축하며 창업했습니다.', en:'Founded while building a taste-based travel community.'},
